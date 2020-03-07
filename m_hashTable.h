@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
+using namespace std;
 enum state
 {
 	EMPTY,
@@ -13,6 +14,20 @@ public:
 	int operator()(int tmp)
 	{
 		return tmp;
+	}
+};
+
+class dealstr
+{
+	int operator()(const string &str)
+	{
+		int sum = 0;
+		int seed = 131;
+		for (auto & e:str)
+		{
+			sum = sum * seed + e;
+		}
+		return sum & 0x7FFFFFFF;
 	}
 };
 namespace lxh
@@ -82,9 +97,9 @@ namespace lxh
 		bool erase(K & key)
 		{
 			int n = find(key);
-			if (n != -1)
+			if (n == -1)
 			{
-				return 
+				return false;
 			}
 			else
 			{
@@ -97,7 +112,7 @@ namespace lxh
 			 
 			int hashret = hashFunc(key);
 
-			while (m_table[hashret].m_state != EXIST)
+			while (m_table[hashret].m_state != EMPTY)
 			{
 				if (m_table[hashret].m_state==EXIST && m_table[hashret].m_val==key)
 				{
@@ -118,6 +133,18 @@ namespace lxh
 			FUNC func;
 			return func(key) % m_capicaty;
 
+		}
+		bool empty()
+		{
+			return 0 == hash_size();
+		}
+		bool swap(hashTable<K,V> &tmp)
+		{
+
+			m_table.swap(tmp.m_table);
+			int t_size = m_size;
+			m_size = tmp.m_size;
+			tmp.m_size = t_size;
 		}
 	};
 	template<class K,class V,class FUNC>

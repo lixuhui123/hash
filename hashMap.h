@@ -90,7 +90,7 @@ public:
 
 		tmp = new HashBucketNode<T>(val);
 
-		tmp->m_next = m_data[hashnum];
+		tmp->m_next = m_data[hashnum];//头插
 		m_data[hashnum] = tmp;
 
 		m_size++;
@@ -102,12 +102,12 @@ public:
 		int hashnum = hashFunc(val);
 		HashBucketNode<T> * tmp;
 
-		if (!m_data[hashnum])
+		if (!m_data[hashnum])//先看桶在不在
 		{
 			return false;
 		}
 
-		if (m_data[hashnum]->m_val == val)
+		if (m_data[hashnum]->m_val == val)//桶的头部就是它，头删
 		{
 			tmp = m_data[hashnum];
 			m_data[hashnum] = tmp->m_next;
@@ -179,4 +179,4 @@ long long HashSet<T, SW>::s_m_primeTable[30] = {
 	360457, 720899, 1441807, 2883593, 5767169,
 	11534351, 23068673, 46137359, 92274737, 184549429,
 	369098771, 738197549, 1476395029, 2952790016u, 4294967291u
-};
+};	

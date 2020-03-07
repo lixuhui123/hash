@@ -124,6 +124,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="map的find.cpp" />
+    <ClCompile Include="m_hashmap.h" />
     <ClCompile Include="m_hashTable.h" />
     <ClCompile Include="vector的resize.cpp" />
     <ClCompile Include="源.cpp" />
