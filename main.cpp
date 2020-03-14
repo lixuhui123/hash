@@ -10,7 +10,7 @@ int mainuiyfuky()
 	ht.insert(pair<int, int>(4, 5));
 	ht.insert(pair<int, int>(33, 5));
 	ht.insert(pair<int, int>(44, 5));
-	ht.insert(pair<int, int>(6, 5));
+	ht.insert(pair<int, int>(6, 5));//
 
 	hashTable<string, int,dealstr> test;
 	test.insert(pair<string, int>("deee", 1));
